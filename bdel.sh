@@ -1,13 +1,9 @@
-#! usr/local/bin
+#! bin/bash
 
-echo "Enter the folder name to be deleted: "
-read folder_name
+source_path="/home/sajakshrestha/Bash_Projects/backupDelete"
+destination_path="/home/sajakshrestha/RecycleBin/"
+zip_name=sajak-$(date +"Date_%m:%d-Time:%T")
 
-source_path="$HOME/Bash_Projects/$folder_name"
-destination_path="$HOME/RecycleBin"
-time_stamp=$(date +"%m,%d")
-folder_format="$folder_name.tar.gz"
+/usr/bin/tar -czvf $destination_path/$zip_name.tar.gz -C $source_path sajak
 
-mv "$source_path" "$destination_path"/"$time_stamp.tar.gz"
-
-echo "$folder_name moved to RecycleBin"
+echo "Zip folder has been created"
